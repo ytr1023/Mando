@@ -1,3 +1,4 @@
+// Version 1.5
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -16,6 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
+
+                // Add null check before calling scrollIntoView
+                if (targetElement.scrollIntoView) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             } else {
                 console.warn(`Target element with id "${targetId}" not found.`);
             }
