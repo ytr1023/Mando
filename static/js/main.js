@@ -4,11 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
-            const targetElement = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
             if (targetElement) {
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
+            } else {
+                console.warn(`Target element with id "${targetId}" not found.`);
             }
         });
     });
@@ -34,34 +38,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function addActiveClass(id) {
         let selector = `.navbar-nav a[href="#${id}"]`;
-        document.querySelector(selector).classList.add("active");
-    }
-
-    // Typewriter effect
-    const typewriterElement = document.querySelector('.typewriter');
-    const typewriterText = typewriterElement.innerHTML.trim();
-    typewriterElement.innerHTML = '';
-    let i = 0;
-
-    function typeWriter() {
-        if (i < typewriterText.length) {
-            if (typewriterText.charAt(i) === '<' && typewriterText.substr(i, 4) === '<br>') {
-                typewriterElement.innerHTML += '<br>';
-                i += 4;
-            } else {
-                typewriterElement.innerHTML += typewriterText.charAt(i);
-                i++;
-            }
-            setTimeout(typeWriter, 100);
+        const element = document.querySelector(selector);
+        if (element) {
+            element.classList.add("active");
         }
     }
 
-    typeWriter();
+    // Subscribe form submission
+    const subscribeForm = document.getElementById('subscribeForm');
+    if (subscribeForm) {
+        subscribeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            // Here you would typically send the email to your server
+            console.log('Subscribed email:', email);
+            alert('Thank you for subscribing!');
+            subscribeForm.reset();
+        });
+    }
 
     // Parallax scrolling effect
     window.addEventListener('scroll', function() {
         const parallax = document.querySelector('.parallax-bg');
-        let scrollPosition = window.pageYOffset;
-        parallax.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        if (parallax) {
+            let scrollPosition = window.pageYOffset;
+            parallax.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        }
     });
 });
