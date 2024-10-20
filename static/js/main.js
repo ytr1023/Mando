@@ -8,8 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
+                const headerOffset = 56; // Height of the fixed navbar
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
                 window.scrollTo({
-                    top: targetElement.offsetTop - 56, // Adjust for fixed navbar
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
             } else {
@@ -65,5 +69,19 @@ document.addEventListener('DOMContentLoaded', function() {
             let scrollPosition = window.pageYOffset;
             parallax.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
         }
+    });
+
+    // Intersection Observer for feature animations
+    const featureObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature-item').forEach(item => {
+        item.style.animationPlayState = 'paused';
+        featureObserver.observe(item);
     });
 });
