@@ -4,9 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
@@ -36,14 +39,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Typewriter effect
     const typewriterElement = document.querySelector('.typewriter');
-    const typewriterText = typewriterElement.textContent;
-    typewriterElement.textContent = '';
+    const typewriterText = typewriterElement.innerHTML.trim();
+    typewriterElement.innerHTML = '';
     let i = 0;
 
     function typeWriter() {
         if (i < typewriterText.length) {
-            typewriterElement.textContent += typewriterText.charAt(i);
-            i++;
+            if (typewriterText.charAt(i) === '<' && typewriterText.substr(i, 4) === '<br>') {
+                typewriterElement.innerHTML += '<br>';
+                i += 4;
+            } else {
+                typewriterElement.innerHTML += typewriterText.charAt(i);
+                i++;
+            }
             setTimeout(typeWriter, 100);
         }
     }
