@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
-                targetElement.scrollIntoView({
+                window.scrollTo({
+                    top: targetElement.offsetTop - 56, // Adjust for fixed navbar
                     behavior: 'smooth'
                 });
             } else {

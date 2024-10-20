@@ -47,6 +47,24 @@ body {
     transform: scale(1.05);
 }
 
+/* Feature section styles */
+#features .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    background-color: var(--bs-dark);
+}
+
+#features .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
 /* Responsive styles */
 @media (max-width: 767px) {
     #home {
@@ -57,21 +75,6 @@ body {
         margin-top: 2rem;
         max-width: 60%;
     }
-}
-
-/* Rest of the styles remain the same */
-
-.card-img-top {
-    height: 200px;
-    object-fit: cover;
-}
-
-#team .card {
-    transition: transform 0.3s;
-}
-
-#team .card:hover {
-    transform: translateY(-5px);
 }
 
 /* Ensure consistent dark mode across all sections */
