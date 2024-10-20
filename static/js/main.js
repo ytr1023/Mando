@@ -33,4 +33,27 @@ document.addEventListener('DOMContentLoaded', function() {
         let selector = `.navbar-nav a[href="#${id}"]`;
         document.querySelector(selector).classList.add("active");
     }
+
+    // Typewriter effect
+    const typewriterElement = document.querySelector('.typewriter');
+    const typewriterText = typewriterElement.textContent;
+    typewriterElement.textContent = '';
+    let i = 0;
+
+    function typeWriter() {
+        if (i < typewriterText.length) {
+            typewriterElement.textContent += typewriterText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
+        }
+    }
+
+    typeWriter();
+
+    // Parallax scrolling effect
+    window.addEventListener('scroll', function() {
+        const parallax = document.querySelector('.parallax-bg');
+        let scrollPosition = window.pageYOffset;
+        parallax.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+    });
 });

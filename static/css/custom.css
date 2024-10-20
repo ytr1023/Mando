@@ -7,10 +7,56 @@ body {
     margin-right: 10px;
 }
 
+/* Full-height hero section */
 #home {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
+
+/* Parallax background */
+.parallax-bg {
+    background-image: url('/static/img/hero-bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Typewriter effect */
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid var(--bs-primary);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--bs-primary); }
+}
+
+/* Animated button */
+.animated-btn {
+    transition: all 0.3s ease;
+}
+
+.animated-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Rest of the styles remain the same */
 
 .card-img-top {
     height: 200px;
