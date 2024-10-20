@@ -38,10 +38,17 @@
     </nav>
 
     <header id="home" class="parallax-bg">
-        <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
-            <h1 class="display-4 mb-4 typewriter">Welcome to Mando Echo</h1>
-            <p class="lead mb-5">AI-powered Mandian language learning at your fingertips</p>
-            <a href="#features" class="btn btn-primary btn-lg animated-btn">Learn More</a>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <h1 class="display-4 mb-4 typewriter">Welcome to Mando Echo</h1>
+                    <p class="lead mb-5">AI-powered Mandian language learning at your fingertips</p>
+                    <a href="#features" class="btn btn-primary btn-lg animated-btn">Learn More</a>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <img src="{{ url_for('static', filename='img/generated-icon.png') }}" alt="Mando Echo AI" class="img-fluid rounded-circle home-image">
+                </div>
+            </div>
         </div>
     </header>
 

@@ -9,10 +9,9 @@ body {
 
 /* Full-height hero section */
 #home {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
 }
@@ -54,6 +53,30 @@ body {
 .animated-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Home image styles */
+.home-image {
+    max-width: 80%;
+    height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.home-image:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+    #home {
+        text-align: center;
+    }
+
+    .home-image {
+        margin-top: 2rem;
+        max-width: 60%;
+    }
 }
 
 /* Rest of the styles remain the same */
