@@ -49,17 +49,8 @@ body {
 
 /* Feature section styles */
 .features-section {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
-
-.feature-screen {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    scroll-snap-align: start;
+    padding: 4rem 0;
+    overflow-y: auto;
 }
 
 .feature-item {
@@ -67,8 +58,16 @@ body {
     padding: 2rem;
     background: linear-gradient(145deg, var(--bs-dark) 0%, var(--bs-secondary) 100%);
     border-radius: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
     max-width: 80%;
+    margin: 0 auto 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.feature-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .feature-item:hover {
@@ -95,28 +94,6 @@ body {
 .feature-item p {
     font-size: 1.1rem;
     color: var(--bs-light);
-}
-
-/* Animation for feature items */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.feature-item {
-    animation: fadeInUp 0.5s ease-out;
-    animation-fill-mode: both;
-    opacity: 0;
-}
-
-.feature-item.visible {
-    opacity: 1;
 }
 
 /* Responsive styles */

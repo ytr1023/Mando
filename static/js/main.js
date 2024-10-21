@@ -1,4 +1,4 @@
-// Version 1.6
+// Version 1.7
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -17,11 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
-
-                // Add null check before calling scrollIntoView
-                if (targetElement.scrollIntoView) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
             } else {
                 console.warn(`Target element with id "${targetId}" not found.`);
             }
@@ -58,19 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', updateActiveNavLink);
 
-    // Smooth scrolling for feature screens
-    const featuresSection = document.querySelector('.features-section');
-    const featureScreens = document.querySelectorAll('.feature-screen');
-
-    featuresSection.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const delta = e.deltaY;
-        featuresSection.scrollBy({
-            top: delta,
-            behavior: 'smooth'
-        });
-    });
-
     // Intersection Observer for feature animations
     const featureObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -80,11 +62,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 entry.target.classList.remove('visible');
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-    featureScreens.forEach(screen => {
-        const featureItem = screen.querySelector('.feature-item');
-        featureObserver.observe(featureItem);
+    document.querySelectorAll('.feature-item').forEach(item => {
+        featureObserver.observe(item);
     });
 
     // Subscribe form submission
