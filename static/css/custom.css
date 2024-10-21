@@ -5,6 +5,12 @@
 
 body {
     padding-top: 56px; /* Adjust for fixed navbar */
+    background-color: #e6f3ff; /* Light blue background */
+    color: #333; /* Darker text color for contrast */
+}
+
+#features, #team, #contact {
+    background-color: #e6f3ff; /* Light blue background for all sections */
 }
 
 .navbar-brand img {
@@ -78,7 +84,7 @@ body {
 .feature-image-placeholder {
     flex: 0 0 45%;
     height: 300px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
@@ -95,7 +101,7 @@ body {
 
 .feature-content-box p {
     font-size: 1.2rem;
-    color: var(--bs-light);
+    color: #333;
 }
 
 /* Team section styles */
@@ -117,20 +123,20 @@ body {
 
 /* Contact section styles */
 #contact {
-    background-color: var(--bs-dark);
-    color: var(--bs-light);
+    background-color: #e6f3ff;
+    color: #333;
 }
 
 #contact .form-control {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.1);
-    color: var(--bs-light);
+    background-color: #fff;
+    border-color: #ccc;
+    color: #333;
 }
 
 #contact .form-control:focus {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #fff;
     border-color: var(--bs-primary);
-    color: var(--bs-light);
+    color: #333;
 }
 
 /* Responsive styles */
