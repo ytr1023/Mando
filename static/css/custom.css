@@ -1,4 +1,8 @@
 /* Custom styles */
+:root {
+    --bs-primary: #4da6ff; /* Lighter blue color */
+}
+
 body {
     padding-top: 56px; /* Adjust for fixed navbar */
 }
