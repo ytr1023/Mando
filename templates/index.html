@@ -89,32 +89,47 @@
     <section id="team" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Our Team</h2>
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='img/team1.svg') }}" class="card-img-top" alt="Team Member 1">
-                        <div class="card-body">
-                            <h5 class="card-title">John Doe</h5>
-                            <p class="card-text">AI Language Expert</p>
-                        </div>
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/team1.svg') }}" class="rounded-circle mb-3" alt="John Doe">
+                        <h5>John Doe</h5>
+                        <p class="text-muted">AI Language Expert</p>
+                        <p>John specializes in AI-driven language learning methodologies.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='img/team2.svg') }}" class="card-img-top" alt="Team Member 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Jane Smith</h5>
-                            <p class="card-text">Mandian Language Specialist</p>
-                        </div>
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/team2.svg') }}" class="rounded-circle mb-3" alt="Jane Smith">
+                        <h5>Jane Smith</h5>
+                        <p class="text-muted">Mandian Language Specialist</p>
+                        <p>Jane brings years of experience in Mandian language instruction.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='img/team3.svg') }}" class="card-img-top" alt="Team Member 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Mike Johnson</h5>
-                            <p class="card-text">Full-stack Developer</p>
-                        </div>
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/team3.svg') }}" class="rounded-circle mb-3" alt="Mike Johnson">
+                        <h5>Mike Johnson</h5>
+                        <p class="text-muted">Full-stack Developer</p>
+                        <p>Mike is responsible for the technical implementation of our platform.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/team4.svg') }}" class="rounded-circle mb-3" alt="Emily Chen">
+                        <h5>Emily Chen</h5>
+                        <p class="text-muted">UX/UI Designer</p>
+                        <p>Emily ensures our platform provides an intuitive and engaging user experience.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/team5.svg') }}" class="rounded-circle mb-3" alt="Alex Wong">
+                        <h5>Alex Wong</h5>
+                        <p class="text-muted">Data Scientist</p>
+                        <p>Alex works on improving our AI models and language learning algorithms.</p>
                     </div>
                 </div>
             </div>

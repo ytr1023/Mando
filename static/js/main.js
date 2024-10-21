@@ -1,4 +1,4 @@
-// Version 3.1
+// Version 3.2
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

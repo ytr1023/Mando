@@ -94,6 +94,23 @@ body {
     color: var(--bs-light);
 }
 
+/* Team section styles */
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid var(--bs-primary);
+}
+
+.team-member h5 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-member p {
+    margin-bottom: 0.5rem;
+}
+
 /* Responsive styles */
 @media (max-width: 767px) {
     #home {
