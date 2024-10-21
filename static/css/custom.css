@@ -5,6 +5,7 @@
 
 body {
     padding-top: 56px; /* Adjust for fixed navbar */
+    background-color: #080029;
 }
 
 .navbar-brand img {

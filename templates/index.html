@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Mando Echo Logo" width="30" height="30" class="d-inline-block align-top">
+                <img src="{{ url_for('static', filename='img/Echo1.png') }}" alt="Mando Echo Logo" width="30" height="30" class="d-inline-block align-top">
                 Mando Echo
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,11 +41,11 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <h1 class="display-4 mb-4 fw-bold" style="font-size: 3.5rem;">
+                    <h1 class="display-4 mb-4">
                         Welcome to<br>
                         Mando Echo
                     </h1>
-                    <p class="lead mb-5">The world's first AI professional speaking teaching software for overseas Chinese learners</p>
+                    <p class="lead mb-5">AI-powered Mandian language learning at your fingertips</p>
                     <form id="subscribeForm" class="mb-3">
                         <div class="input-group">
                             <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" required>
@@ -54,14 +54,130 @@
                     </form>
                 </div>
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <img src="{{ url_for('static', filename='img/generated-icon.png') }}" alt="Mando Echo AI" class="img-fluid home-image">
+                    <img src="{{ url_for('static', filename='img/Logo.png') }}" alt="Mando Echo AI" class="img-fluid home-image">
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Rest of the HTML content remains unchanged -->
-    
+    <section id="features" class="features-section">
+        <h1 class="text-center mb-5">Key Features</h1>
+        <div class="container">
+            <div class="feature-item">
+                <div class="feature-image-placeholder"></div>
+                <div class="feature-content-box">
+                    <h3>Teaching Courses</h3>
+                    <p>Comprehensive Mandian language courses tailored to your learning style and pace.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-content-box">
+                    <h3>AI Digital Human Sparring</h3>
+                    <p>Practice your Mandian skills with our advanced AI-powered digital human partners.</p>
+                </div>
+                <div class="feature-image-placeholder"></div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-image-placeholder"></div>
+                <div class="feature-content-box">
+                    <h3>5D Feedback Report</h3>
+                    <p>Receive unique, comprehensive feedback on your spoken Mandian across five dimensions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Team</h2>
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4">
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/Yi.jpg') }}" class="rounded-circle mb-3" alt="John Doe">
+                        <h5>Yi Luo</h5>
+                        <p class="text-muted">Founder</p>
+                        <p>Master's Student in Computational Linguistics at Georgetown University, specializing in speech and natural language processing for human-computer interaction, particularly in the fields of education and psychology. As the founder, responsible for technical planning and project strategy, leading innovative exploration.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/Siyu.jpg') }}" class="rounded-circle mb-3" alt="Jane Smith">
+                        <h5>Siyu Liang</h5>
+                        <p class="text-muted">Co-Founder</p>
+                        <p>Ph.D. Student in Computational Linguistics at the University of Washington, focusing on speech and natural language processing, with a specialization in language model optimization and low-resource speech technology. As a co-founder, responsible for department coordination and core technology development, enhancing the performance of natural language processing tasks.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/Sherly.jpg') }}" class="rounded-circle mb-3" alt="Mike Johnson">
+                        <h5>Sherly Zheng</h5>
+                        <p class="text-muted">Education Lead</p>
+                        <p>Master's Student in Theoretical Linguistics at Georgetown University, specializing in teaching Chinese as a second language, with over six years of experience as a Chinese instructor in New York State. Currently assisting Brandeis University in developing tools for Chinese semantic representation analysis, responsible for curriculum design, teaching feedback, and resource development.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/Yicheng.jpg') }}" class="rounded-circle mb-3" alt="Emily Chen">
+                        <h5>Yicheng Wang</h5>
+                        <p class="text-muted">Technology Lead</p>
+                        <p>Graduate Student in Mechanical Engineering at Stanford University, specializing in artificial intelligence and robotics. Experienced in deep reinforcement learning and edge device model deployment. Participates in natural language processing technology development and cross-departmental project collaboration, improving system efficiency and personalized user experiences.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="team-member text-center">
+                        <img src="{{ url_for('static', filename='img/Tianrui.jpg') }}" class="rounded-circle mb-3" alt="Alex Wong">
+                        <h5>Tianrui Ye</h5>
+                        <p class="text-muted">Technology Lead</p>
+                        <p>Undergraduate Student in Statistics and Data Science at the University of North Carolina at Chapel Hill, researching the reliability of generative large language models and the integration of brain science with large models. Responsible for large model training, parameter optimization, and performance monitoring, dedicated to improving model accuracy and generalization capabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Contact Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form method="POST" action="{{ url_for('index') }}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Mando Echo. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
