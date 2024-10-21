@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, flash
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
 import os
 
 app = Flask(__name__)
