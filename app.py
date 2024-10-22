@@ -1,13 +1,20 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
-import os
+from flask import Flask, render_template, request, jsonify, flash
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
-app.secret_key = 'test_secret_key'  # 设置一个秘密密钥用于flash消息
+app.config['SECRET_KEY'] = 'Test'  # 请替换为一个安全的密钥
+
+# 邮件设置
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+SMTP_USERNAME = "doq96149@gmail.com"  # 请替换为您的Gmail地址
+SMTP_PASSWORD = "ipnt ryts fovm rqay"  # 请替换为您的应用专用密码
 
 app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -17,9 +24,13 @@ def index():
         message = request.form.get('message')
         
         if name and email and message:
-            flash('Your message has been sent successfully!', 'success')
+            try:
+                send_contact_email(name, email, message)
+                flash('Your message has been successfully sent!', 'success')
+            except Exception as e:
+                flash('There was an error sending the message, please try again later.', 'error')
         else:
-            flash('Please fill out all fields.', 'error')
+            flash('Please complete all fields.', 'error')
     
     return render_template('index.html')
 
@@ -29,15 +40,11 @@ def submit_contact():
     email = request.form.get('email')
     message = request.form.get('message')
     
-    # 确保存储目录存在
-    if not os.path.exists('contacts'):
-        os.makedirs('contacts')
-    
-    # 将联系信息写入文件
-    with open('contacts/contacts.txt', 'a', encoding='utf-8') as f:
-        f.write(f"Name: {name}\nEmail: {email}\nMessage: {message}\n\n")
-    
-    return jsonify({'status': 'success', 'message': 'Thank you for your message!'})
+    try:
+        send_contact_email(name, email, message)
+        return jsonify({'status': 'success', 'message': 'Thank you for your message! We will get back to you as soon as possible.'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': 'There was an error sending the message, please try again later.'})
 
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
@@ -45,17 +52,36 @@ def subscribe():
     email = data.get('email')
     
     if not email:
-        return jsonify({'status': 'error', 'message': '邮箱不能为空。'})
+        return jsonify({'status': 'error', 'message': 'The email address cannot be empty.'})
     
-    # 确保存储目录存在
-    if not os.path.exists('subscribers'):
-        os.makedirs('subscribers')
+    try:
+        send_subscription_notification(email)
+        return jsonify({'status': 'success', 'message': 'Thank you for your subscription!'})
+    except Exception as e:
+        print(f"Error while sending mail: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'An error occurred during the subscription process, please try again later.'})
+
+def send_contact_email(name, email, message):
+    subject = f"新的联系表单提交 - 来自 {name}"
+    body = f"姓名: {name}\n电子邮件: {email}\n消息: {message}"
+    send_email(SMTP_USERNAME, subject, body)
+
+def send_subscription_notification(subscriber_email):
+    subject = "新的订阅者"
+    body = f"新的订阅者邮箱地址：{subscriber_email}"
+    send_email(SMTP_USERNAME, subject, body)
+
+def send_email(to_email, subject, body):
+    msg = MIMEMultipart()
+    msg['From'] = SMTP_USERNAME
+    msg['To'] = to_email
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'plain'))
     
-    # 将订阅邮箱写入文件
-    with open('subscribers/subscribers.txt', 'a', encoding='utf-8') as f:
-        f.write(f"{email}\n")
-    
-    return jsonify({'status': 'success', 'message': 'Thank you for your subscription!'})
+    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+        server.starttls()
+        server.login(SMTP_USERNAME, SMTP_PASSWORD)
+        server.send_message(msg)
 
 if __name__ == '__main__':
     app.run(debug=True)
