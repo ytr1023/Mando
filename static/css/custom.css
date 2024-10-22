@@ -44,7 +44,7 @@ body {
 .home-image {
     max-width: 80%;
     height: auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
     transition: transform 0.3s ease;
 }
 
@@ -76,11 +76,10 @@ body {
     transform: translateY(0);
 }
 
-.feature-image-placeholder {
+.feature-image-carousel {
     flex: 0 0 45%;
-    height: 300px;
-    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .feature-content-box {
@@ -150,13 +149,13 @@ body {
         text-align: center;
     }
 
-    .feature-image-placeholder,
+    .feature-image-carousel,
     .feature-content-box {
         flex: 0 0 100%;
         margin-bottom: 2rem;
     }
 
-    .feature-image-placeholder {
+    .feature-image-carousel {
         height: 200px;
     }
 }
@@ -170,4 +169,35 @@ body {
 [data-bs-theme=dark] .custom-component {
     background-color: var(--bs-dark);
     color: var(--bs-light);
+}
+
+/* 新添加的样式 */
+.feature-description {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.feature-description.fade-out {
+    opacity: 0;
+}
+
+.feature-description.fade-in {
+    opacity: 1;
+}
+
+/* 更新文字描述的样式 */
+.feature-description-container {
+    position: relative;
+    height: 60px; /* 根据需要调整高度 */
+    overflow: hidden;
+}
+
+.feature-description {
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.feature-description.fade-out {
+    opacity: 0;
 }
