@@ -142,10 +142,29 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        new bootstrap.Carousel(carousel, {
-            interval: 5000, // 5秒切换一次
+        // 创建新的 Carousel 实例，延长间隔时间
+        var carouselInstance = new bootstrap.Carousel(carousel, {
+            interval: 10000, // 10秒切换一次
             pause: 'hover'
         });
+
+        // 修改添加控制按钮的部分
+        var prevButton = document.createElement('button');
+        prevButton.className = 'carousel-control-prev';
+        prevButton.type = 'button';
+        prevButton.setAttribute('data-bs-target', '#featureCarousel' + (index + 1));
+        prevButton.setAttribute('data-bs-slide', 'prev');
+        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i><span class="visually-hidden">上一个</span>';
+
+        var nextButton = document.createElement('button');
+        nextButton.className = 'carousel-control-next';
+        nextButton.type = 'button';
+        nextButton.setAttribute('data-bs-target', '#featureCarousel' + (index + 1));
+        nextButton.setAttribute('data-bs-slide', 'next');
+        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i><span class="visually-hidden">下一个</span>';
+
+        carousel.appendChild(prevButton);
+        carousel.appendChild(nextButton);
 
         carousel.addEventListener('slide.bs.carousel', function (event) {
             var nextDescription = event.relatedTarget.dataset.description;
