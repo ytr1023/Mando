@@ -82,27 +82,27 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    // 创建并显示成功消息
+                    // Create and show success message
                     const alertDiv = document.createElement('div');
                     alertDiv.className = 'alert alert-success mt-3';
                     alertDiv.textContent = data.message;
                     subscribeForm.insertAdjacentElement('afterend', alertDiv);
 
-                    // 重置表单
+                    // Reset the form
                     subscribeForm.reset();
 
-                    // 5秒后自动移除提示
+                    // 5 seconds later, remove the alert
                     setTimeout(() => {
                         alertDiv.remove();
                     }, 5000);
                 } else {
-                    // 创建并显示错误消息
+                    // Create and show error message
                     const alertDiv = document.createElement('div');
                     alertDiv.className = 'alert alert-danger mt-3';
                     alertDiv.textContent = 'Subscription failed, please try again later.';
                     subscribeForm.insertAdjacentElement('afterend', alertDiv);
 
-                    // 5秒后自动移除提示
+                    // 5 seconds later, remove the alert
                     setTimeout(() => {
                         alertDiv.remove();
                     }, 5000);
@@ -110,13 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error:', error);
-                // 创建并显示错误消息
+                // Create and show error message
                 const alertDiv = document.createElement('div');
                 alertDiv.className = 'alert alert-danger mt-3';
                 alertDiv.textContent = 'An error has occurred, please try again later.';
                 subscribeForm.insertAdjacentElement('afterend', alertDiv);
 
-                // 5秒后自动移除提示
+                // 5 seconds later, remove the alert
                 setTimeout(() => {
                     alertDiv.remove();
                 }, 5000);
@@ -142,13 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // 创建新的 Carousel 实例，延长间隔时间
+        // Initialize carousel
         var carouselInstance = new bootstrap.Carousel(carousel, {
-            interval: 10000, // 10秒切换一次
+            interval: 10000, // 10 seconds
             pause: 'hover'
         });
 
-        // 修改添加控制按钮的部分
+        // Add carousel controls
         var prevButton = document.createElement('button');
         prevButton.className = 'carousel-control-prev';
         prevButton.type = 'button';
@@ -173,14 +173,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(function() {
                     descriptionElement.textContent = nextDescription;
                     descriptionElement.classList.remove('fade-out');
-                }, 250); // 半个过渡时间后更新文本
+                }, 250); // 0.25 seconds
             } else {
                 console.warn('No description found for slide in carousel', index + 1);
             }
         });
     });
 
-    // 处理联系表单提交
+    // Contact form submission
     const contactForm = document.querySelector('#contact form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    // 创建并显示成功消息
+                    // Create and show success message
                     const alertDiv = document.createElement('div');
                     alertDiv.className = 'alert alert-success alert-dismissible fade show';
                     alertDiv.role = 'alert';
@@ -204,10 +204,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                     contactForm.insertAdjacentElement('beforebegin', alertDiv);
 
-                    // 重置表单
+                    // Reset the form
                     contactForm.reset();
 
-                    // 5秒后自动移除提示
+                    // 5 seconds later, remove the alert
                     setTimeout(() => {
                         alertDiv.remove();
                     }, 5000);

@@ -171,7 +171,7 @@ body {
     color: var(--bs-light);
 }
 
-/* 新添加的样式 */
+/* rotate the icon */
 .feature-description {
     transition: opacity 0.5s ease-in-out;
 }
@@ -184,7 +184,7 @@ body {
     opacity: 1;
 }
 
-/* 更新文字描述的样式 */
+/* Update the carousel control button styles */
 .feature-description-container {
     height: auto;
     max-height: none;
@@ -202,7 +202,7 @@ body {
     opacity: 0;
 }
 
-/* 轮播图控制按钮样式 */
+/* Button styles */
 .feature-image-carousel .carousel-control-prev,
 .feature-image-carousel .carousel-control-next {
     width: 5%;
@@ -221,7 +221,7 @@ body {
     opacity: 1;
 }
 
-/* 新添加的 Font Awesome 图标样式 */
+/* Add custom styles to the carousel control buttons */
 .feature-image-carousel .carousel-control-prev i,
 .feature-image-carousel .carousel-control-next i {
     font-size: 24px;

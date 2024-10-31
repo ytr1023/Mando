@@ -4,18 +4,19 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'Test'  # 请替换为一个安全的密钥
+app.config['SECRET_KEY'] = 'Test' # test secret key
 
-# 邮件设置
+# Email Sending Configuration
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-SMTP_USERNAME = "doq96149@gmail.com"  # 请替换为您的Gmail地址
-SMTP_PASSWORD = "ipnt ryts fovm rqay"  # 请替换为您的应用专用密码
+SMTP_USERNAME = "doq96149@gmail.com" # Tianrui email
+SMTP_PASSWORD = "ipnt ryts fovm rqay" # Temporary password
 
 app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
+# Routes
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -34,6 +35,7 @@ def index():
     
     return render_template('index.html')
 
+# Contact Form
 @app.route('/submit_contact', methods=['POST'])
 def submit_contact():
     name = request.form.get('name')
@@ -46,6 +48,7 @@ def submit_contact():
     except Exception as e:
         return jsonify({'status': 'error', 'message': 'There was an error sending the message, please try again later.'})
 
+# Subscription Form
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
     data = request.json
@@ -61,14 +64,15 @@ def subscribe():
         print(f"Error while sending mail: {str(e)}")
         return jsonify({'status': 'error', 'message': 'An error occurred during the subscription process, please try again later.'})
 
+# Email Sending Functions
 def send_contact_email(name, email, message):
-    subject = f"新的联系表单提交 - 来自 {name}"
-    body = f"姓名: {name}\n电子邮件: {email}\n消息: {message}"
+    subject = f"New contact form submission - from {name}"
+    body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
     send_email(SMTP_USERNAME, subject, body)
 
 def send_subscription_notification(subscriber_email):
-    subject = "新的订阅者"
-    body = f"新的订阅者邮箱地址：{subscriber_email}"
+    subject = "New subscriber"
+    body = f"New Subscriber Email Address：{subscriber_email}"
     send_email(SMTP_USERNAME, subject, body)
 
 def send_email(to_email, subject, body):
